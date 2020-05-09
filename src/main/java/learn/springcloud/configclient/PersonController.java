@@ -13,7 +13,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import reactor.core.publisher.Flux;
 
-@RefreshScope
+//@RefreshScope
 @Controller
 public class PersonController {
 
