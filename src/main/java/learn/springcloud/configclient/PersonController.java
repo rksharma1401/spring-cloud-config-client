@@ -2,6 +2,7 @@ package learn.springcloud.configclient;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope; 
 import org.springframework.http.HttpHeaders;
@@ -13,31 +14,25 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import reactor.core.publisher.Flux;
 
-//@RefreshScope
+@RefreshScope
 @Controller
 public class PersonController {
 
-    @Value("${userDbRestApp}")
-    String userDbRestApp;
-
-    private WebClient webClient2;
+    
+    @Autowired
+    private WebClientImpl webClientImpl;
 
     @RequestMapping("/usersList")
     public String getRate(Model m) {
-        if (webClient2 == null) {
-            webClient2 = WebClient.builder().baseUrl(userDbRestApp)
-                    .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).build();
-        }
-        Flux<Person> flux = webClient2
+        
+        Flux<Person> flux = webClientImpl.getWebClient()
                 .get()
                 .uri(
                 "/pc/getAllPersons")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).retrieve() 
                 .bodyToFlux(Person.class);
 
-        List<Person> lst = flux.collectList().block(); 
-        m.addAttribute("userDbRestApp", userDbRestApp);
-
+        List<Person> lst = flux.collectList().block();   
         m.addAttribute("personString", lst.toString());
         m.addAttribute("personList", lst);
         // name of view
