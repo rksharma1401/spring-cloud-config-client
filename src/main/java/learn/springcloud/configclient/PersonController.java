@@ -19,7 +19,7 @@ public class PersonController {
     private WebClientImpl webClientImpl;
 
     @RequestMapping("/usersList")
-    public String getRate(Model m) {
+    public String getUserList(Model m) {
         
         Flux<Person> flux = webClientImpl.getWebClient()
                 .get()
