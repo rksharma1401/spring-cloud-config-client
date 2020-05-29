@@ -21,16 +21,16 @@
 <div class="row">
 	<div class="col-md-2"></div>
 	<div class="col-md-8"> 
-		<div th:if="${not #lists.isEmpty(categoryList)}">
+		<div th:if="${not #lists.isEmpty(ledgerList)}">
 			<h2>Person List</h2>
 			<table class="table table-striped">
-				<tr>
-					<th>categoryId</th>
+				<tr> 
 					<th>categoryName</th>
+					<th>amount</th>
 				</tr>
-				<tr th:each="category : ${categoryList}">
-					<td th:text="${category.id}"></td>
-					<td th:text="${category.categoryName}"></td>
+				<tr th:each="ledger : ${ledgerList}"> 
+					<td th:text="${ledger.category.categoryName}"></td>
+					<td th:text="${ledger.amount}"></td>
 				</tr>
 			</table>
 		</div>
