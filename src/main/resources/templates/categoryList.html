@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Config Client</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<h1> Spring Cloud Config Client</h1> 
+	</div>
+	<div class="col-md-2">
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8"> 
+		<div th:if="${not #lists.isEmpty(categoryList)}">
+			<h2>Person List</h2>
+			<table class="table table-striped">
+				<tr>
+					<th>categoryName</th>
+				</tr>
+				<tr th:each="person : ${categoryList}">
+					<td th:text="${person.categoryName}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="col-md-2"></div>
+</div>    
+</body>
+</html>
