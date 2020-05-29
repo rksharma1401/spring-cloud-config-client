@@ -8,6 +8,27 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+		  $("#sendPost").click(function(){
+			var amt=$("#amount").val(); 
+			var catId=$("#categoryId").val(); 
+			$.ajax({
+				url: 'addLedger',
+				type: 'POST',
+				data: jQuery.param({ categoryId: catId, amount : amt}) ,
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+				success: function (response) {
+					alert(response.status);
+				},
+				error: function () {
+					alert("error");
+				}
+			});
+		  });
+		});
+		</script>
 </head>
 <body>
 <div class="row">
@@ -20,7 +41,7 @@
 </div>
 <div class="row">
 	<div class="col-md-2"></div>
-	<div class="col-md-8"> 
+	<div class="col-md-8">
 		<div th:if="${not #lists.isEmpty(ledgerList)}">
 			<h2>Person List</h2>
 			<table class="table table-striped">
@@ -36,6 +57,23 @@
 		</div>
 	</div>
 	<div class="col-md-2"></div>
-</div>    
+</div>  
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">  
+
+		<h1> Add amount to Ledger</h1> 
+			<div class="form-group">
+				<label for="categoryId">categoryId:</label>
+				<input type="text" class="form-control" id="categoryId" placeholder="Enter categoryId">
+			  </div>
+			  <div class="form-group">
+				<label for="amount">Amount (rounded to nearest integer):</label>
+				<input type="number" class="form-control" id="amount" placeholder="Enter amount">
+			  </div> 
+			  <button type="button" id="sendPost"   class="btn btn-default">Submit</button>
+		</div> 
+	<div class="col-md-2"></div>
+</div>  
 </body>
 </html>
