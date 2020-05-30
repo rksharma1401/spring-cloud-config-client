@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <head> 
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script>
         $(document).ready(function(){
           $("button").click(function(){
@@ -12,19 +17,16 @@
           });
         });
         </script>
-        </head>
-<body>
-
-    <h1>Hello World</h1>
- 
-
-    <b></b>
-    <a href="usersList"> UsersList </a>
-    <b></b>
-    <a href="categoryList"> categoryList </a>
-    <b></b> 
-    <a href="ledgerList"> ledgerList </a>
-    <b></b>
+  </head>
+<body>  
+    <div class="container">
+      <h2>Hello World</h2>
+      <ul class="list-group">
+        <li class="list-group-item"><a href="usersList"> UsersList </a></li>
+        <li class="list-group-item"><a href="categoryList"> categoryList </a></li>
+        <li class="list-group-item"><a href="ledgerList"> ledgerList </a></li>
+      </ul>
+    </div> 
     <button>Refresh config</button>
 </body>
 
