@@ -21,9 +21,20 @@ public class LedgerController {
         Iterable<Ledger> iterator = ledgerRepoImpl.findAll();
 
         List<Ledger> lst = new ArrayList<>();
-        iterator.forEach(e -> lst.add(e));
-
+        long totalAdded =0; 
+        long totalWithdrawn =0; 
+        for(Ledger e : iterator) {
+            lst.add(e) ;
+            if(e.getAmount()>=0)
+             totalAdded+=e.getAmount();
+            else{ 
+              totalWithdrawn+= (Math.abs(e.getAmount()));
+            }
+        }
         m.addAttribute("ledgerList", lst);
+
+        m.addAttribute("totalAdded", totalAdded);
+        m.addAttribute("totalWithdrawn", totalWithdrawn);
         // name of view
         return "ledgerList";
     }
