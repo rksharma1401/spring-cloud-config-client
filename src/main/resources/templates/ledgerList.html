@@ -20,7 +20,7 @@
 				data: jQuery.param({ categoryId: catId, amount : amt}) ,
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				success: function (response) {
-					alert(response.status);
+					alert(response);
 				},
 				error: function () {
 					alert("error");
@@ -54,17 +54,20 @@
 					<td th:text="${ledger.amount}"></td>
 				</tr>
 			</table>
+			 
+		<div>
+	   	<ul class="list-group">
+			<li class="list-group-item list-group-item-success" ><p th:text="${totalWithdrawn}"></p></li>
+			<li class="list-group-item list-group-item-warning" ><p th:text="${totalAdded}"></p></li>
+		</ul> 
+		</div>
 		</div>
 	</div>
 	<div class="col-md-2"></div>
 </div>  
 <div class="row">
 	<div class="col-md-2"></div>
-	<div class="col-md-8">  
-		<div>
-			<span class="label label-danger" th:text="${totalAdded}"></span>
-			<span class="label label-success" th:text="${totalWithdrawn}"></span> 
-		</div>
+	<div class="col-md-8"> 
 		<h1> Add amount to Ledger</h1> 
 			<div class="form-group">
 				<label for="categoryId">categoryId:</label>

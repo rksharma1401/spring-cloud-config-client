@@ -23,8 +23,10 @@ public class LedgerController {
         List<Ledger> lst = new ArrayList<>();
         long totalAdded =0; 
         long totalWithdrawn =0; 
+        String category="";
         for(Ledger e : iterator) {
             lst.add(e) ;
+            category=e.getCategory().getCategoryName();
             if(e.getAmount()>=0){
              totalAdded+=e.getAmount();
             }else{ 
@@ -33,8 +35,8 @@ public class LedgerController {
         }
         m.addAttribute("ledgerList", lst);
 
-        m.addAttribute("totalAdded", totalAdded);
-        m.addAttribute("totalWithdrawn", totalWithdrawn);
+        m.addAttribute("totalAdded", "Added to "+category+" : "+ totalAdded);
+        m.addAttribute("totalWithdrawn","Added back to bank : " + totalWithdrawn);
         // name of view
         return "ledgerList";
     }
