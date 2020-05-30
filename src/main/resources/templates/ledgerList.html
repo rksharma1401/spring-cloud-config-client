@@ -61,7 +61,10 @@
 <div class="row">
 	<div class="col-md-2"></div>
 	<div class="col-md-8">  
-
+		<div>
+			<span class="label label-danger" th:text="${totalAdded}"></span>
+			<span class="label label-success" th:text="${totalWithdrawn}"></span> 
+		</div>
 		<h1> Add amount to Ledger</h1> 
 			<div class="form-group">
 				<label for="categoryId">categoryId:</label>
@@ -72,11 +75,7 @@
 				<input type="number" class="form-control" id="amount" placeholder="Enter amount">
 			  </div> 
 			  <button type="button" id="sendPost"   class="btn btn-default">Submit</button>
-		</div> 
-		<div>
-			<p class="label label-danger" th:text="${totalAdded}"></p>
-			<p class="label label-success" th:text="${totalAdded}"></p> 
-		</div>
+		</div>  
 	<div class="col-md-2"></div>
 </div>  
 </body>

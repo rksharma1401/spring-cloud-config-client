@@ -25,9 +25,9 @@ public class LedgerController {
         long totalWithdrawn =0; 
         for(Ledger e : iterator) {
             lst.add(e) ;
-            if(e.getAmount()>=0)
+            if(e.getAmount()>=0){
              totalAdded+=e.getAmount();
-            else{ 
+            }else{ 
               totalWithdrawn+= (Math.abs(e.getAmount()));
             }
         }
