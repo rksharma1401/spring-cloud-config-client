@@ -1,4 +1,4 @@
-package learn.springcloud.configclient;
+package learn.springcloud.configclient.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import learn.springcloud.configclient.dao.CategoryRepo;
 import learn.springcloud.configclient.model.Category;
 
 @Controller
-@RequestMapping("/ledger")
+@RequestMapping("/category")
 public class CategoryController {
     @Autowired
     CategoryRepo categoryRepoImpl;

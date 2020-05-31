@@ -1,4 +1,4 @@
-package learn.springcloud.configclient;
+package learn.springcloud.configclient.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +12,12 @@ import learn.springcloud.configclient.dao.LedgerRepo;
 import learn.springcloud.configclient.model.Ledger;
 
 @Controller 
+@RequestMapping("/ledger")
 public class LedgerController {
     @Autowired
     LedgerRepo ledgerRepoImpl;
 
-    @RequestMapping("/ledger/list")
+    @RequestMapping("/list")
     public String getCategoryList(Model m) {
         Iterable<Ledger> iterator = ledgerRepoImpl.findAll();
 

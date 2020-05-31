@@ -26,8 +26,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/merchant/**").hasRole("MERCHANT")
                 .antMatchers("/user/**").hasRole("USER")
+
                 .antMatchers("/ledger/**").hasRole("LEDGER")
                 .antMatchers("/ledgerApi/**").hasRole("LEDGER")
+                .antMatchers("/category/**").hasRole("LEDGER")
+                
                 .antMatchers("/").permitAll()
                 .and().formLogin();
                 http.logout().logoutSuccessUrl("/").permitAll();
