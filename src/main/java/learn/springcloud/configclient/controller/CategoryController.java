@@ -17,7 +17,7 @@ public class CategoryController {
     @Autowired
     CategoryRepo categoryRepoImpl;
 
-    @RequestMapping("/categoryList")
+    @RequestMapping("/list")
     public String getCategoryList(Model m) {
         Iterable<Category> iterator = categoryRepoImpl.findAll();
        

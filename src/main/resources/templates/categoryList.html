@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title> Config Client</title>
 	<meta charset="utf-8"/>
@@ -11,11 +12,11 @@
 </head>
 <body>
 <div class="row">
-	<div class="col-md-2"></div>
+	<div class="col-md-2">Welcome <span sec:authentication="name"></span> </div>
 	<div class="col-md-8">
 		<h1> Spring Cloud Config Client</h1> 
 	</div>
-	<div class="col-md-2">
+	<div class="col-md-2"><a href="/logout">logout</a>
 	</div>
 </div>
 <div class="row">
