@@ -21,7 +21,7 @@ public class PersonController {
     private WebClientImpl webClientImpl;
 
     @RequestMapping("/usersList")
-    public String getUserList(Model m) {
+    public String getUserList(Model m,@Autowired Authentication authentication) {
         
         Flux<Person> flux = webClientImpl.getWebClient()
                 .get()
@@ -33,6 +33,7 @@ public class PersonController {
         List<Person> lst = flux.collectList().block();   
         m.addAttribute("personString", lst.toString());
         m.addAttribute("personList", lst);
+        m.addAttribute("userName",authentication.getName());
         // name of view
         return "usersList";
     }
