@@ -3,7 +3,7 @@ package learn.springcloud.configclient.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "userDetails")
 public class User {
     @Id 
     private int id;
