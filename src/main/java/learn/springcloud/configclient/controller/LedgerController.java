@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import learn.springcloud.configclient.dao.LedgerRepo;
 import learn.springcloud.configclient.model.Ledger;
 
-@Controller  
+@Controller 
+@RequestMapping("/ledger") 
 public class LedgerController {
     @Autowired
     LedgerRepo ledgerRepoImpl;
 
-    @RequestMapping("/ledger/list")
+    @RequestMapping("/list")
     public String getCategoryList(Model m) {
         Iterable<Ledger> iterator = ledgerRepoImpl.findAll();
 
