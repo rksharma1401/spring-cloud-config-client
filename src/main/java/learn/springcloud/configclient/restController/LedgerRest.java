@@ -9,7 +9,7 @@ import learn.springcloud.configclient.dao.LedgerRepo;
 import learn.springcloud.configclient.model.Category;
 import learn.springcloud.configclient.model.Ledger;
 
-@RestController
+@RestController("/ledgerApi")
 public class LedgerRest {
     
     @Autowired
