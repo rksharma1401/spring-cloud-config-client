@@ -17,7 +17,7 @@ public class LedgerController {
     @Autowired
     LedgerRepo ledgerRepoImpl;
 
-    @RequestMapping("/list")
+    @RequestMapping("/llist")
     public String getCategoryList(Model m) {
         Iterable<Ledger> iterator = ledgerRepoImpl.findAll();
 
