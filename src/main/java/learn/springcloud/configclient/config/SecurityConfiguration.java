@@ -29,9 +29,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/ledger/**").hasRole("LEDGER")
                 .antMatchers("/ledgerApi/**").hasRole("LEDGER")
-                .antMatchers("/category/**").hasRole("LEDGER")
-                
-                .antMatchers("/").permitAll()
+                .antMatchers("/category/**").hasRole("LEDGER") 
+                .antMatchers("/**").permitAll()
                 .and().formLogin();
                 http.logout().logoutSuccessUrl("/").permitAll();
     }
