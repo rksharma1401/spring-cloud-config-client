@@ -26,12 +26,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/merchant/**").hasRole("MERCHANT")
                 .antMatchers("/user/**").hasRole("USER")
-
+                .antMatchers("/merchantapi/**").hasRole("MERCHANT")
+                .antMatchers("/userapi/**").hasRole("USER")
                 .antMatchers("/ledger/**").hasRole("LEDGER")
-                .antMatchers("/ledgerApi/**").hasRole("LEDGER")
-                .antMatchers("/category/**").hasRole("LEDGER") 
-                .antMatchers("/**").permitAll()
+                .antMatchers("/ledgerapi/**").hasRole("LEDGER")//rest
+                .antMatchers("/category/**").hasRole("LEDGER")  
+                .antMatchers("/").permitAll()
+                .antMatchers("/*").permitAll()  
                 .and().formLogin();
+                http.csrf().disable(); 
                 http.logout().logoutSuccessUrl("/").permitAll();
     }
 

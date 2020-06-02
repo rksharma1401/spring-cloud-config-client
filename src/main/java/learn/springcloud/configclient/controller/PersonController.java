@@ -34,7 +34,8 @@ public class PersonController {
         List<Person> lst = flux.collectList().block();   
         m.addAttribute("personString", lst.toString());
         m.addAttribute("personList", lst);
-        m.addAttribute("userName",authentication.getName());
+        if(authentication!=null)
+            m.addAttribute("userName",authentication.getName());
         // name of view
         return "usersList";
     }

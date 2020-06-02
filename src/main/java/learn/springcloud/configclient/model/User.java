@@ -4,8 +4,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "userDetails")
+@SequenceGenerator(name="seq", initialValue=1, allocationSize=50)
 public class User {
     @Id 
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     private int id;
     private String userName;
     private String password;
@@ -53,10 +55,17 @@ public class User {
         this.roles = roles;
     }
 
-    public User(String userName, String password, boolean active, String roles) {
+    public User(String userName, String password, boolean active, String roles,int id) {
         this.userName = userName;
         this.password = password;
         this.active = active;
         this.roles = roles;
+        this.id=id;
+    }
+    public User(String userName, String password, boolean active, String roles) {
+        this.userName = userName;
+        this.password = password;
+        this.active = active;
+        this.roles = roles; 
     }
 }

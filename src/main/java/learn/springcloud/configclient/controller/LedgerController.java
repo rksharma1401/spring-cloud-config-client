@@ -40,7 +40,8 @@ public class LedgerController {
 
         m.addAttribute("totalAdded", "Added to "+category+" : "+ totalAdded);
         m.addAttribute("totalWithdrawn","Added back to bank : " + totalWithdrawn);
-        m.addAttribute("userName",authentication.getName());
+        if(authentication!=null)
+            m.addAttribute("userName",authentication.getName());
         // name of view
         return "ledgerList";
     } 

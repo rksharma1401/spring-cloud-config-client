@@ -1,0 +1,17 @@
+learn\springcloud\configclient\dao\CategoryRepo.class
+learn\springcloud\configclient\service\AppUserDetailsService.class
+learn\springcloud\configclient\dao\LedgerRepo.class
+learn\springcloud\configclient\controller\CategoryController.class
+learn\springcloud\configclient\model\Person.class
+learn\springcloud\configclient\model\Ledger.class
+learn\springcloud\configclient\restController\LedgerRest.class
+learn\springcloud\configclient\dao\UserRepo.class
+learn\springcloud\configclient\model\AuthUser.class
+learn\springcloud\configclient\config\WebClientImpl.class
+learn\springcloud\configclient\controller\PersonController.class
+learn\springcloud\configclient\model\User.class
+learn\springcloud\configclient\ConfigclientApplication.class
+learn\springcloud\configclient\restController\UserCreateRest.class
+learn\springcloud\configclient\model\Category.class
+learn\springcloud\configclient\controller\LedgerController.class
+learn\springcloud\configclient\config\SecurityConfiguration.class

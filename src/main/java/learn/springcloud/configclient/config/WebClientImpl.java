@@ -24,6 +24,7 @@ public class WebClientImpl {
     public WebClient getWebClient() {
         System.out.println(" ***************************************** calling getWebClient *****************************************");
         if(webClient==null  ){
+            System.out.println("userDbRestApp " + userDbRestApp);
             System.out.println(" ***************************************** creating WebClient *****************************************");
             webClient = WebClient.builder().baseUrl(userDbRestApp)
                     .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).build(); 
