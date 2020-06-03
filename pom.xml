@@ -8,11 +8,11 @@
 		<version>2.2.7.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>learn.springcloud</groupId>
-	<artifactId>configclient</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>configclient</name>
-	<description> project for Spring Boot cloud config server's client</description>
+	<groupId>wp.fis.innovate48</groupId>
+	<artifactId>cardtokenpay</artifactId>
+	<version>1.0.0</version>
+	<name>cardtokenpay</name>
+	<description> project for payment via token</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -39,11 +39,7 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
-		<dependency>
-   			 <groupId>org.springframework.boot</groupId>
-   			 <artifactId>spring-boot-starter-webflux</artifactId>
-		</dependency>
+		</dependency> 
 		<dependency>
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-starter-data-jpa</artifactId>

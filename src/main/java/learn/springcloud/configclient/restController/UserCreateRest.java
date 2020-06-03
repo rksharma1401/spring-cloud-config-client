@@ -35,14 +35,14 @@ public class UserCreateRest {
         return "Success";
     }
 
-    @PostMapping("postuser")
-    public String postUser(@RequestBody User user) {
+    @PostMapping(path = "postuser", consumes = "application/json", produces = "application/json")
+    public User postUser(@RequestBody User user) {
         try{    
         userRepo.save(user); 
         }catch(Exception e){
             e.printStackTrace();
         }
-        return "Success";
+        return user;
     }
     
 }
