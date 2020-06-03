@@ -29,6 +29,6 @@ public class UserController {
         if(authentication!=null)
             m.addAttribute("userName",authentication.getName());
         // name of view 
-        return "userList";
+        return "usersList";
     }
 }
