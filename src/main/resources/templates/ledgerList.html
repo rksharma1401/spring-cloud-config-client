@@ -16,7 +16,7 @@
 			var amt=$("#amount").val(); 
 			var catId=$("#categoryId").val(); 
 			$.ajax({
-				url: 'ledgerApi/addLedger',
+				url: '/ledgerApi/addLedger',
 				type: 'POST',
 				data: jQuery.param({ categoryId: catId, amount : amt}) ,
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
