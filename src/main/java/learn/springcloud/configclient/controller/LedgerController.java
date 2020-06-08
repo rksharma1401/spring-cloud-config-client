@@ -40,6 +40,13 @@ public class LedgerController {
 
         m.addAttribute("totalAdded", "Added to "+category+" : "+ totalAdded);
         m.addAttribute("totalWithdrawn","Added back to bank : " + totalWithdrawn);
+        if((totalAdded-totalWithdrawn)>0){
+            m.addAttribute("totalleft","Money still to get back : " + (totalAdded-totalWithdrawn));
+            m.addAttribute("moneyEarned", "Yet to withdraw all");
+        }else{
+            m.addAttribute("totalleft", "All withdraw");
+            m.addAttribute("moneyEarned","Profit : " + Math.abs(totalAdded-totalWithdrawn));
+        }
         m.addAttribute("userName",authentication.getName());
         // name of view
         return "ledgerList";
