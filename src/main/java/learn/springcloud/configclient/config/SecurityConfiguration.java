@@ -29,11 +29,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/ledger/**").hasRole("LEDGER")
                 .antMatchers("/ledgerApi/**").hasRole("LEDGER")
-                .antMatchers("/category/**").hasRole("LEDGER")
-               // .antMatchers("/ledgerApi/**").permitAll() 
+                .antMatchers("/category/**").hasRole("LEDGER") 
+
                 .antMatchers("/").permitAll()
                 .and().formLogin();
- http.csrf().disable();
+                http.csrf().disable();
                 http.logout().logoutSuccessUrl("/").permitAll();
     }
 
