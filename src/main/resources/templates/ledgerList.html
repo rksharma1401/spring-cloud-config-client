@@ -9,10 +9,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	var deleteLedger;
+	
 	<script>
-		 
-
+		var deleteLedger; 
 		$(document).ready(function(){
 		  $("#sendPost").click(function(){
 			var amt=$("#amount").val(); 
@@ -52,7 +51,7 @@
 </head>
 <body>
 <div class="row">
-	<div class="col-md-2">Welcome <span th:text="${userName}"></span></div>
+	<div class="col-md-2"><h6 class="bg-success text-white">Welcome <span  th:text="${userName}"></span> </h6></div>
 	<div class="col-md-8">
 		<h1> Spring Cloud Config Client</h1> 
 	</div>
