@@ -11,6 +11,22 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 	<script>
+		function deleteLedger(e){
+			var ledgerId=e.value;
+			$.ajax({
+				url: '/ledgerApi/deleteLedger',
+				type: 'delete',
+				data: jQuery.param({ id: ledgerId}) ,
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+				success: function (response) {
+					alert(response);
+				},
+				error: function () {
+					alert("error");
+				}
+			});
+		 }
+
 		$(document).ready(function(){
 		  $("#sendPost").click(function(this){
 			var amt=$("#amount").val(); 
@@ -27,23 +43,7 @@
 					alert("error");
 				}
 			});
-		  });
-
-		 function deleteLedger(e){
-			var ledgerId=e.value;
-			$.ajax({
-				url: '/ledgerApi/deleteLedger',
-				type: 'delete',
-				data: jQuery.param({ id: ledgerId}) ,
-				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-				success: function (response) {
-					alert(response);
-				},
-				error: function () {
-					alert("error");
-				}
-			});
-		 }
+		  }); 
 		});
 		</script>
 </head>
@@ -70,7 +70,7 @@
 				<tr th:each="ledger : ${ledgerList}"> 
  					<td th:text="${ledger.category.categoryName}"></td>
 					<td th:text="${ledger.amount}"></td>
-					<td><input type="button" th:value="${ledger.id}" class="btn btn-default" onclick="deleteLedger(this)">Delete </Input> </td>
+					<td> Delete Id :<input type="button" th:value="${ledger.id}" class="btn btn-danger" onclick="deleteLedger(this)"></Input> </td>
 				</tr>
 			</table>
 			 
