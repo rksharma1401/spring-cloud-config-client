@@ -12,7 +12,7 @@
 
 	<script>
 		$(document).ready(function(){
-		  $("#sendPost").click(function(){
+		  $("#sendPost").click(function(this){
 			var amt=$("#amount").val(); 
 			var catId=$("#categoryId").val(); 
 			$.ajax({
@@ -28,6 +28,22 @@
 				}
 			});
 		  });
+
+		 function deleteLedger(e){
+			var ledgerId=e.value;
+			$.ajax({
+				url: '/ledgerApi/deleteLedger',
+				type: 'delete',
+				data: jQuery.param({ id: ledgerId}) ,
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+				success: function (response) {
+					alert(response);
+				},
+				error: function () {
+					alert("error");
+				}
+			});
+		 }
 		});
 		</script>
 </head>
@@ -46,13 +62,15 @@
 		<div th:if="${not #lists.isEmpty(ledgerList)}">
 			<h2>Amount List</h2>
 			<table class="table table-striped">
-				<tr> 
+				<tr>  
 					<th>categoryName</th>
 					<th>amount</th>
+					<th>Action</th>
 				</tr>
 				<tr th:each="ledger : ${ledgerList}"> 
-					<td th:text="${ledger.category.categoryName}"></td>
+ 					<td th:text="${ledger.category.categoryName}"></td>
 					<td th:text="${ledger.amount}"></td>
+					<td><input type="button" th:value="${ledger.id}" class="btn btn-default" onclick="deleteLedger(this)">Delete </Input> </td>
 				</tr>
 			</table>
 			 

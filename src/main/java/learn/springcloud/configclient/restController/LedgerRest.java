@@ -1,5 +1,7 @@
 package learn.springcloud.configclient.restController;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,9 +29,14 @@ public class LedgerRest {
         category.setId(categoryId);
         entity.setCategory(category);
         entity=  ledgerRepoImpl.save(entity);
-        
-        // name of view 
+         
         return "success with Id : " +entity.getId();
+    }
+
+    @PostMapping("deleteLedger")
+    public String deleteLedger(@NotNull @RequestParam Long id) { 
+         ledgerRepoImpl.deleteById(id); 
+        return "success with Id : " +id;
     }
     
 }
