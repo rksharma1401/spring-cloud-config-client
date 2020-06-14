@@ -9,26 +9,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+	var deleteLedger;
 	<script>
-		function deleteLedger(e){
-			var ledgerId=e.value;
-			$.ajax({
-				url: '/ledgerApi/deleteLedger',
-				type: 'delete',
-				data: jQuery.param({ id: ledgerId}) ,
-				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-				success: function (response) {
-					alert(response);
-				},
-				error: function () {
-					alert("error");
-				}
-			});
-		 }
+		 
 
 		$(document).ready(function(){
-		  $("#sendPost").click(function(this){
+		  $("#sendPost").click(function(){
 			var amt=$("#amount").val(); 
 			var catId=$("#categoryId").val(); 
 			$.ajax({
@@ -44,6 +30,23 @@
 				}
 			});
 		  }); 
+
+		  deleteLedger= function (e){
+			var ledgerId=e.value;
+			$.ajax({
+				url: '/ledgerApi/deleteLedger',
+				type: 'delete',
+				data: jQuery.param({ id: ledgerId}) ,
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+				success: function (response) {
+					alert(response);
+				},
+				error: function () {
+					alert("error");
+				}
+			});
+		 };
+		 
 		});
 		</script>
 </head>
