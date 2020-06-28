@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import learn.springcloud.configclient.config.WebClientImpl;
+import learn.springcloud.configclient.feignclients.UserClient;
 import learn.springcloud.configclient.model.Person;
 import reactor.core.publisher.Flux;
  
@@ -20,18 +21,30 @@ public class PersonController {
     
     @Autowired
     private WebClientImpl webClientImpl;
-
+ 
+    @Autowired
+    private UserClient userClient;
+    
+    
     @RequestMapping("/usersList")
     public String getUserList(Model m,@Autowired Authentication authentication) {
-        
-        Flux<Person> flux = webClientImpl.getWebClient()
+        List<Person> lst = null;
+         try {
+            Flux<Person> flux = webClientImpl.getWebClient()
                 .get()
                 .uri(
                 "/pc/getAllPersons")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).retrieve() 
                 .bodyToFlux(Person.class);
+                lst = flux.collectList().block();  
+        } catch (Exception e) { 
+            lst = userClient.getPersonList();
+        }
+        
 
-        List<Person> lst = flux.collectList().block();   
+        
+
+
         m.addAttribute("personString", lst.toString());
         m.addAttribute("personList", lst);
         m.addAttribute("userName",authentication.getName());

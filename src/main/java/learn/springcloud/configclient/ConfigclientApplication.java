@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import learn.springcloud.configclient.feignclients.*;
+import learn.springcloud.configclient.model.Person;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -43,6 +44,10 @@ class ServiceInstanceRestController {
 	
 	@Autowired 
 	private DateClient dateClient;
+
+	@Autowired
+	private UserClient userClient;
+
 	// client to see if app registered or not
 	@RequestMapping("/service-instances/{applicationName}")
 	public List<ServiceInstance> serviceInstancesByApplicationName(
@@ -59,5 +64,10 @@ class ServiceInstanceRestController {
 	@RequestMapping("/getDateEureka")
 	public String getDateMi() {   
 		return dateClient.getDate();
+	}
+
+	@RequestMapping("/getPersonList")
+	public List<Person> getPersonList() {   
+		return userClient.getPersonList();
 	}
 }
