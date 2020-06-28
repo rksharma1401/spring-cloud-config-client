@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import learn.springcloud.configclient.config.WebClientImpl;
-import learn.springcloud.configclient.feignclients.UserClient;
+import learn.springcloud.configclient.feignclients.DateClient;
 import learn.springcloud.configclient.model.Person;
 import reactor.core.publisher.Flux;
  
@@ -23,7 +23,7 @@ public class PersonController {
     private WebClientImpl webClientImpl;
  
     @Autowired
-    private UserClient userClient;
+    private DateClient userClient;
     
     
     @RequestMapping("/usersList")
@@ -38,7 +38,7 @@ public class PersonController {
                 .bodyToFlux(Person.class);
                 lst = flux.collectList().block();  
         } catch (Exception e) { 
-            lst = userClient.getPersonList();
+            lst = userClient.getUserList();
         }
         
 

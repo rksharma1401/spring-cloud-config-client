@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import learn.springcloud.configclient.feignclients.*;
+import learn.springcloud.configclient.feignclients.DateClient;
 import learn.springcloud.configclient.model.Person;
 
 @SpringBootApplication
@@ -44,9 +44,7 @@ class ServiceInstanceRestController {
 	
 	@Autowired 
 	private DateClient dateClient;
-
-	@Autowired
-	private UserClient userClient;
+ 
 
 	// client to see if app registered or not
 	@RequestMapping("/service-instances/{applicationName}")
@@ -66,8 +64,8 @@ class ServiceInstanceRestController {
 		return dateClient.getDate();
 	}
 
-	@RequestMapping("/getPersonList")
-	public List<Person> getPersonList() {   
-		return userClient.getPersonList();
+	@RequestMapping("/getFallBackUser")
+	public List<Person> getFallBackUser() {   
+		return dateClient.getUserList();
 	}
 }
