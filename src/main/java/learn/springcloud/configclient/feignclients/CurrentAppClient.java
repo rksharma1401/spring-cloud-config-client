@@ -12,7 +12,7 @@ import learn.springcloud.configclient.model.Person;
 
 
 @FeignClient(name="SPRING-CLOUD-CLIENT-APP",fallback = FeignClientFallback.class)
-public interface DateClient {
+public interface CurrentAppClient {
     @RequestMapping(method = RequestMethod.GET, value = "/getDate")
     public String getDate();
     
@@ -20,3 +20,20 @@ public interface DateClient {
 	public List<Person> getUserList();
 }
 
+@Component
+class FeignClientFallback implements CurrentAppClient {
+   
+    @Override
+    public String getDate() { 
+        return "No Date";
+    }
+
+    @Override
+    public List<Person> getUserList() { 
+        List<Person> list= new ArrayList<Person>();
+        list.add(new Person("BACKUP","PERSON",0,"FeignClientUserFallback"));
+        return list;
+    
+    }
+    
+}

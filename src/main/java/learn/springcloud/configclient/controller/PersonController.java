@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import learn.springcloud.configclient.config.WebClientImpl;
-import learn.springcloud.configclient.feignclients.DateClient;
+import learn.springcloud.configclient.feignclients.CurrentAppClient;
 import learn.springcloud.configclient.model.Person;
 import reactor.core.publisher.Flux;
  
@@ -23,7 +23,7 @@ public class PersonController {
     private WebClientImpl webClientImpl;
  
     @Autowired
-    private DateClient userClient;
+    private CurrentAppClient userClient;
     
     
     @RequestMapping("/usersList")

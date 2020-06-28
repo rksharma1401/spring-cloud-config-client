@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import learn.springcloud.configclient.feignclients.DateClient;
+import learn.springcloud.configclient.feignclients.CurrentAppClient;
 import learn.springcloud.configclient.model.Person;
 
 @SpringBootApplication
@@ -43,7 +43,7 @@ class ServiceInstanceRestController {
 	private DiscoveryClient discoveryClient;
 	
 	@Autowired 
-	private DateClient dateClient;
+	private CurrentAppClient client;
  
 
 	// client to see if app registered or not
@@ -61,11 +61,11 @@ class ServiceInstanceRestController {
 
 	@RequestMapping("/getDateEureka")
 	public String getDateMi() {   
-		return dateClient.getDate();
+		return client.getDate();
 	}
 
 	@RequestMapping("/getFallBackUser")
 	public List<Person> getFallBackUser() {   
-		return dateClient.getUserList();
+		return client.getUserList();
 	}
 }
