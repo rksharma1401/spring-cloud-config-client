@@ -11,22 +11,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import learn.springcloud.configclient.model.Person;
 
 
-@FeignClient(name="SPRING-CLOUD-CLIENT-APP",fallback = FeignClientFallback.class)
-public interface CurrentAppClient {
-    @RequestMapping(method = RequestMethod.GET, value = "/getDate")
-    public String getDate();
-    
+@FeignClient(name="SPRING-CLOUD-CLIENT-APP",fallback = CurrentAppFeignClientFallback.class)
+public interface CurrentAppClient { 
     @RequestMapping(method = RequestMethod.GET, value = "/getUserList")
 	public List<Person> getUserList();
 }
 
 @Component
-class FeignClientFallback implements CurrentAppClient {
+class CurrentAppFeignClientFallback implements CurrentAppClient {
    
-    @Override
-    public String getDate() { 
-        return "No Date";
-    }
+    
 
     @Override
     public List<Person> getUserList() { 

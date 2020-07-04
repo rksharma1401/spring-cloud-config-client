@@ -1,6 +1,5 @@
 package learn.springcloud.configclient;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import learn.springcloud.configclient.feignclients.CurrentAppClient;
+import learn.springcloud.configclient.feignclients.WebservicesEureakaClient;
 import learn.springcloud.configclient.model.Person;
 
 @SpringBootApplication
@@ -45,6 +45,8 @@ class ServiceInstanceRestController {
 	@Autowired 
 	private CurrentAppClient client;
  
+	@Autowired
+	private WebservicesEureakaClient wsClient;
 
 	// client to see if app registered or not
 	@RequestMapping("/service-instances/{applicationName}")
@@ -53,15 +55,11 @@ class ServiceInstanceRestController {
 		return this.discoveryClient.getInstances(applicationName);
 	}
 
+ 
 
 	@RequestMapping("/getDate")
-	public String getDate() {
-		return new Date().toString();
-	}
-
-	@RequestMapping("/getDateEureka")
-	public String getDateMi() {   
-		return client.getDate();
+	public String getDate() {   
+		return wsClient.getDate();
 	}
 
 	@RequestMapping("/getFallBackUser")
