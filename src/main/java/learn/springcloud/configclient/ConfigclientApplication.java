@@ -1,5 +1,6 @@
 package learn.springcloud.configclient;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,15 +56,26 @@ class ServiceInstanceRestController {
 		return this.discoveryClient.getInstances(applicationName);
 	}
 
- 
-
+	// register this rest service with eureka
 	@RequestMapping("/getDate")
 	public String getDate() {   
-		return wsClient.getDate();
+		return new Date().toString();
 	}
+
+	// get data from this app using eureka
+	@RequestMapping("/getDateEureka")
+	public String getDateSelf() {   
+		return client.getDate();
+	} 
 
 	@RequestMapping("/getFallBackUser")
 	public List<Person> getFallBackUser() {   
 		return client.getUserList();
+	}
+
+	// get data from other app using eureka
+	@RequestMapping("/getDateWSEureka")
+	public String getDateWSEureka() {   
+		return wsClient.getDate();
 	}
 }

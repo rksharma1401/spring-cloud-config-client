@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import learn.springcloud.configclient.model.Person;
-@FeignClient(name="WEB-SERVICE-EUREKA" )// ,fallback = WebservicesEureakaFeignClientFallback.class)
+@FeignClient(name="WEB-SERVICE-EUREKA" ,fallback = WebservicesEureakaFeignClientFallback.class)
 public interface WebservicesEureakaClient {
     @RequestMapping(method = RequestMethod.GET, value = "/getDate")
     public String getDate();
@@ -17,7 +17,7 @@ public interface WebservicesEureakaClient {
 	public List<Person> getPersonList();
 }
 
-  @Component
+@Component
 class WebservicesEureakaFeignClientFallback implements WebservicesEureakaClient{
     @Override
     public String getDate() { 

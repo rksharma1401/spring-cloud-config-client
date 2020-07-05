@@ -14,13 +14,18 @@ import learn.springcloud.configclient.model.Person;
 @FeignClient(name="SPRING-CLOUD-CLIENT-APP",fallback = CurrentAppFeignClientFallback.class)
 public interface CurrentAppClient { 
     @RequestMapping(method = RequestMethod.GET, value = "/getUserList")
-	public List<Person> getUserList();
+    public List<Person> getUserList();
+    @RequestMapping(method = RequestMethod.GET, value = "/getDate")
+    public String getDate();
 }
 
 @Component
 class CurrentAppFeignClientFallback implements CurrentAppClient {
    
-    
+    @Override
+    public String getDate() { 
+        return "No Date from SPRING-CLOUD-CLIENT-APP";
+    }
 
     @Override
     public List<Person> getUserList() { 
