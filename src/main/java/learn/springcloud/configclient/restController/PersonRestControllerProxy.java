@@ -19,10 +19,10 @@ public class PersonRestControllerProxy {
 	private WebservicesEureakaClient wsClient;
 
 	@PostMapping("addPerson")
-	public String addPerson(@RequestParam String firstName, @RequestParam String lastname, @RequestParam String place,
+	public String addPerson(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String place,
 			@RequestParam int age) {
 
-		Person p = new Person(firstName, lastname, age, place);
+		Person p = new Person(firstName, lastName, age, place);
 		int id = wsClient.addPerson(p);
 
 		return id > 0 ? "success with Id : " + id : "Error in saving person ,code :"+id;
