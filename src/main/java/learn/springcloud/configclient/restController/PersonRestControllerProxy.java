@@ -1,5 +1,7 @@
 package learn.springcloud.configclient.restController;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +27,10 @@ public class PersonRestControllerProxy {
 		Person p = new Person(firstName, lastName, age, place);
 		int id = wsClient.addPerson(p);
 
-		return id > 0 ? "success with Id : " + id : "Error in saving person ,code :"+id;
+		return id != -1 ? "success with Id : " + id : "Error in saving person ,code :" + id;
+	}
+
+	public List<Person> getPersonList() {
+		return wsClient.getPersonList();
 	}
 }

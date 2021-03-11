@@ -11,46 +11,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import learn.springcloud.configclient.config.WebClientImpl;
 import learn.springcloud.configclient.feignclients.WebservicesEureakaClient;
 import learn.springcloud.configclient.model.Person;
+import learn.springcloud.configclient.restController.PersonRestControllerProxy;
 
 @Controller
 public class PersonController {
 
-    @Autowired
-    private WebClientImpl webClientImpl;
+	@Autowired
+	private WebClientImpl webClientImpl;
 
-    @Autowired
-    private WebservicesEureakaClient webservicesEureakaClient;
+	@Autowired
+	private PersonRestControllerProxy personRestControllerProxy;
 
-    @RequestMapping("/usersList")
-    public String getUserList(Model m, @Autowired Authentication authentication) {
-        List<Person> lst = webservicesEureakaClient.getPersonList();
-        /*
-         * try { Flux<Person> flux = webClientImpl.getWebClient() .get() .uri(
-         * "/pc/getAllPersons") .header(HttpHeaders.CONTENT_TYPE,
-         * MediaType.APPLICATION_JSON_VALUE).retrieve() .bodyToFlux(Person.class); lst =
-         * flux.collectList().block(); } catch (Exception e) { lst =
-         * userClient.getUserList(); }
-         */
+	@RequestMapping("/usersList")
+	public String getUserList(Model m, @Autowired Authentication authentication) {
+		List<Person> lst = personRestControllerProxy.getPersonList();
+		/*
+		 * try { Flux<Person> flux = webClientImpl.getWebClient() .get() .uri(
+		 * "/pc/getAllPersons") .header(HttpHeaders.CONTENT_TYPE,
+		 * MediaType.APPLICATION_JSON_VALUE).retrieve() .bodyToFlux(Person.class); lst =
+		 * flux.collectList().block(); } catch (Exception e) { lst =
+		 * userClient.getUserList(); }
+		 */
 
-        m.addAttribute("personString", lst.toString());
-        m.addAttribute("personList", lst);
-        if (authentication != null)
-            m.addAttribute("userName", authentication.getName());
-        else
-            m.addAttribute("userName", "Guest");
-        // name of view
-        return "usersList";
-    }
-    
-    @RequestMapping("/addUser")
-    public String addUser(Model m, @Autowired Authentication authentication) {
- 
-        if (authentication != null)
-            m.addAttribute("userName", authentication.getName());
-        else
-            m.addAttribute("userName", "Guest");
-        // name of view
-        return "addUser";
-    }
-    
+		m.addAttribute("personString", lst.toString());
+		m.addAttribute("personList", lst);
+		if (authentication != null)
+			m.addAttribute("userName", authentication.getName());
+		else
+			m.addAttribute("userName", "Guest");
+		// name of view
+		return "usersList";
+	}
+
+	@RequestMapping("/addUser")
+	public String addUser(Model m, @Autowired Authentication authentication) {
+
+		if (authentication != null)
+			m.addAttribute("userName", authentication.getName());
+		else
+			m.addAttribute("userName", "Guest");
+		// name of view
+		return "addUser";
+	}
+
 }
