@@ -42,4 +42,15 @@ public class PersonController {
         return "usersList";
     }
     
+    @RequestMapping("/addUser")
+    public String addUser(Model m, @Autowired Authentication authentication) {
+ 
+        if (authentication != null)
+            m.addAttribute("userName", authentication.getName());
+        else
+            m.addAttribute("userName", "Guest");
+        // name of view
+        return "addUser";
+    }
+    
 }
