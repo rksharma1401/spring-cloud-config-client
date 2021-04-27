@@ -15,7 +15,11 @@
 	<description> project for Spring Boot cloud config server's client</description>
 
 	<properties>
-		<java.version>16</java.version>
+		<java.version>16</java.version><maven.compiler.source>16</maven.compiler.source>
+
+        <maven.compiler.target>16</maven.compiler.target>
+
+
 		<spring-cloud.version>Hoxton.SR4</spring-cloud.version>
 	</properties>
 
