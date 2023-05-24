@@ -17,7 +17,7 @@ public class WebClientImpl {
         System.out.println(" ***************************************** Creating WebClientImpl *****************************************");
     }
 
-    @Value("${userDbRestApp}")  
+    @Value("${userDbRestApp:abc}")  
     String userDbRestApp; 
  
 
