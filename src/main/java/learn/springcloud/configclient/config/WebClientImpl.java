@@ -7,7 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 
-@RefreshScope
+//@RefreshScope
 @Configuration
 public class WebClientImpl {
     
@@ -17,8 +17,8 @@ public class WebClientImpl {
         System.out.println(" ***************************************** Creating WebClientImpl *****************************************");
     }
 
-    @Value("${userDbRestApp:abc}")  
-    String userDbRestApp; 
+   // @Value("${userDbRestApp:abc}")  
+    String userDbRestApp="http://localhost"; 
  
 
     public WebClient getWebClient() {
